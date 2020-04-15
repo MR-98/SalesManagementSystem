@@ -17,11 +17,11 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install --save-dev @angular/cli@latest
+    npm install -g --save-dev @angular/cli@latest
     npm install
     ng update
     npm update
-    npm install --save-dev @angular-devkit/build-angular  
+    npm install  --save-dev @angular-devkit/build-angular  
   displayName: 'Install angular CLI'
 - task: Maven@3
   inputs:
