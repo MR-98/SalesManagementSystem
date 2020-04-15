@@ -10,6 +10,15 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g @angular/cli
+  displayName: 'Install angular CLI'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
