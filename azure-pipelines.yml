@@ -11,18 +11,19 @@ pool:
 
 steps:
 
-- task: NodeTool@0
+- task: Npm@1
+  displayName: 'npm install'
   inputs:
-    versionSpec: '12.x'
-  displayName: 'Install Node.js'
+    command: install
+    workingDir: src/main/resources/frontend/SalesManagementSystemFront
 
-- script: |
-    npm install --save-dev @angular/cli@latest
-    npm install
-    ng update
-    npm update
-    npm install  --save-dev @angular-devkit/build-angular   
-  displayName: 'Install angular CLI'
+- task: Npm@1
+  displayName: 'Build Angular'
+  inputs:
+    command: custom
+    customCommand: run build -- --prod
+    workingDir: src/main/resources/frontend/SalesManagementSystemFront
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
