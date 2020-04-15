@@ -18,7 +18,7 @@ steps:
 
 - script: |
     npm install -g @angular/cli
-    npm install
+    npm install --only=dev
     ng update
     npm update
   displayName: 'Install angular CLI'
