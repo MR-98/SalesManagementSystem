@@ -18,9 +18,10 @@ steps:
 
 - script: |
     npm install -g @angular/cli
-    npm install --only=dev
+    npm install
     ng update
     npm update
+    npm install --save-dev @angular-devkit/build-angular  
   displayName: 'Install angular CLI'
 - task: Maven@3
   inputs:
