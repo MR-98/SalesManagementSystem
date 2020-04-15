@@ -33,3 +33,5 @@ build/
 src/main/resources/static/
 src/main/resources/templates/
 /mvnw
+/src/main/resources/public/
+
