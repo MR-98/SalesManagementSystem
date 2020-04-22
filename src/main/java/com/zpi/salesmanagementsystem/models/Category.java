@@ -12,8 +12,8 @@ public class Category {
     private String name;
     private int quantityOfProducts;
 
-    /*@OneToMany(fetch = FetchType.LAZY)
-    private List<Product> products;*/
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Product> products;
 
     protected Category(){
     }
