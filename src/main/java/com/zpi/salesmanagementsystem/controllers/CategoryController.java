@@ -5,10 +5,7 @@ import com.zpi.salesmanagementsystem.models.Category;
 import com.zpi.salesmanagementsystem.repositories.CategoryRepository;
 import com.zpi.salesmanagementsystem.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,8 +25,13 @@ public class CategoryController {
     }
 
     @PostMapping("/categories")
-    void addCategory(@RequestBody Category category){
+    public void addCategory(@RequestBody Category category){
         this.categoryService.addCategory(category);
+    }
+
+    @PutMapping("/categories")
+    public void editCategory(@RequestBody Category category){
+        this.categoryService.editCategory(category);
     }
 
 }
