@@ -24,4 +24,7 @@ public class CategoryService {
     public void addCategory(Category category){
         this.categoryRepository.save(category);
     }
+    public void editCategory(Category category) {
+        this.categoryRepository.save(category);
+    }
 }
