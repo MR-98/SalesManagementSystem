@@ -12,15 +12,16 @@ public class Product {
 
     private double basePrice;
 
-    //@ManyToOne(fetch = FetchType.LAZY)
-   // private Category category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="CATEGORY_ID")
+    private Category category;
 
     public Product(){}
 
-    public Product(String name, double basePrice){
+    public Product(String name, double basePrice, Category category){
         this.name = name;
         this.basePrice = basePrice;
-        //this.category = category;
+        this.category = category;
     }
 
     public Long getId() {
@@ -42,12 +43,12 @@ public class Product {
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
     }
-/*
+
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
-    }*/
+    }
 }

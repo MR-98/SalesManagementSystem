@@ -12,7 +12,7 @@ public class Category {
     private String name;
     private int quantityOfProducts;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category")
     private List<Product> products;
 
     protected Category(){
@@ -40,5 +40,13 @@ public class Category {
 
     public void setQuantityOfProducts(int quantityOfProducts) {
         this.quantityOfProducts = quantityOfProducts;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
