@@ -1,25 +1,28 @@
 package com.zpi.salesmanagementsystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "products"})
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    private int quantityOfProducts;
 
-    @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    private List<Product> products = new ArrayList<>();
 
-    protected Category(){
+    public Category() {
     }
-    private Category(String name){
+
+    public Category(String name) {
         this.name = name;
-        this.quantityOfProducts = 0;
     }
 
     public Long getId() {
@@ -32,14 +35,6 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getQuantityOfProducts() {
-        return quantityOfProducts;
-    }
-
-    public void setQuantityOfProducts(int quantityOfProducts) {
-        this.quantityOfProducts = quantityOfProducts;
     }
 
     public List<Product> getProducts() {
