@@ -1,10 +1,12 @@
 package com.zpi.salesmanagementsystem.services;
 
 import com.zpi.salesmanagementsystem.models.Category;
+import com.zpi.salesmanagementsystem.models.Product;
 import com.zpi.salesmanagementsystem.repositories.CategoryRepository;
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -30,5 +32,17 @@ public class CategoryService {
 
     public void deleteCategory(Long id) {
         this.categoryRepository.deleteById(id);
+    }
+
+    public void addProductToCategory(Product product) {
+        Category category = this.categoryRepository.findById(product.getCategory().getId()).orElseThrow();
+        category.getProducts().add(product);
+        this.categoryRepository.save(category);
+    }
+
+    public void removeProductFromCategory(Product product) {
+        Category category = this.categoryRepository.findById(product.getCategory().getId()).orElseThrow();
+        category.getProducts().remove(product);
+        this.categoryRepository.save(category);
     }
 }
