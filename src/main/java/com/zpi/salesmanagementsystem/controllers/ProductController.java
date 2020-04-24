@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/products")
 public class ProductController {
     private ProductService productService;
 
@@ -16,13 +17,18 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/products")
+    @GetMapping
     public List<Product> getAllProducts(){
         return this.productService.getAllProducts();
     }
 
-    @PostMapping("/products")
+    @PostMapping
     public void addProduct(@RequestBody Product product){
         this.productService.addProduct(product);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable("id") Long id) {
+        this.productService.deleteProduct(id);
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/categories")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -19,19 +20,24 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/categories")
+    @GetMapping
     public List<Category> getAllCategory(){
         return this.categoryService.getAllCategory();
     }
 
-    @PostMapping("/categories")
+    @PostMapping
     public void addCategory(@RequestBody Category category){
         this.categoryService.addCategory(category);
     }
 
-    @PutMapping("/categories")
+    @PutMapping
     public void editCategory(@RequestBody Category category){
         this.categoryService.editCategory(category);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCategory(@PathVariable("id") Long id) {
+        this.categoryService.deleteCategory(id);
     }
 
 }
