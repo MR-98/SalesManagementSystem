@@ -1,5 +1,6 @@
 package com.zpi.salesmanagementsystem.controllers;
 
+import com.zpi.salesmanagementsystem.models.Category;
 import com.zpi.salesmanagementsystem.models.Product;
 import com.zpi.salesmanagementsystem.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class ProductController {
     @PostMapping
     public void addProduct(@RequestBody Product product){
         this.productService.addProduct(product);
+    }
+
+    @PutMapping
+    public void editProduct(@RequestBody Product product){
+        this.productService.editProduct(product);
     }
 
     @DeleteMapping("/{id}")
