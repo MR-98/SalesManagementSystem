@@ -12,7 +12,9 @@ public class Product {
 
     private double basePrice;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    private double preferredSalePrice;
+
+    @ManyToOne
     @JoinColumn(name="CATEGORY_ID")
     private Category category;
 
@@ -50,5 +52,13 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public double getPreferredSalePrice() {
+        return preferredSalePrice;
+    }
+
+    public void setPreferredSalePrice(double preferredSalePrice) {
+        this.preferredSalePrice = preferredSalePrice;
     }
 }
