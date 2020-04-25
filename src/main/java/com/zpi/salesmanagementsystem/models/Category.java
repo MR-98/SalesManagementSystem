@@ -18,6 +18,8 @@ public class Category {
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<Product> products = new ArrayList<>();
 
+    private int quantityOfProducts = 0;
+
     public Category() {
     }
 
@@ -43,5 +45,13 @@ public class Category {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public int getQuantityOfProducts() {
+        return quantityOfProducts;
+    }
+
+    public void setQuantityOfProducts(int quantityOfProducts) {
+        this.quantityOfProducts = quantityOfProducts;
     }
 }

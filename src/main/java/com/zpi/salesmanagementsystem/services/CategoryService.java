@@ -15,17 +15,18 @@ public class CategoryService {
     private CategoryRepository categoryRepository;
 
     @Autowired
-    public CategoryService(CategoryRepository categoryRepository){
+    public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<Category> getAllCategory(){
+    public List<Category> getAllCategory() {
         return IterableUtils.toList(this.categoryRepository.findAll());
     }
 
-    public void addCategory(Category category){
+    public void addCategory(Category category) {
         this.categoryRepository.save(category);
     }
+
     public void editCategory(Category category) {
         this.categoryRepository.save(category);
     }
@@ -37,12 +38,14 @@ public class CategoryService {
     public void addProductToCategory(Product product) {
         Category category = this.categoryRepository.findById(product.getCategory().getId()).orElseThrow();
         category.getProducts().add(product);
+        category.setQuantityOfProducts(category.getQuantityOfProducts() + 1);
         this.categoryRepository.save(category);
     }
 
     public void removeProductFromCategory(Product product) {
         Category category = this.categoryRepository.findById(product.getCategory().getId()).orElseThrow();
         category.getProducts().remove(product);
+        category.setQuantityOfProducts(category.getQuantityOfProducts() - 1);
         this.categoryRepository.save(category);
     }
 }
