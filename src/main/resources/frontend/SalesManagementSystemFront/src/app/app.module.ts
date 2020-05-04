@@ -15,7 +15,9 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
-import { ProductsComponent } from './components/products/products.component';
+import {ProductsComponent} from './components/products/products.component';
+import {SelectStateComponent} from './components/select-state/select-state.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { ProductsComponent } from './components/products/products.component';
     CategoriesComponent,
     CategoryItemComponent,
     HomeComponent,
-    ProductsComponent
+    ProductsComponent,
+    SelectStateComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { ProductsComponent } from './components/products/products.component';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

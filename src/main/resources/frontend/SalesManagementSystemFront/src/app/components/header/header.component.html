@@ -7,20 +7,23 @@
     &#9776;
   </button>
 
-  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" style="width: 100%">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" (click)="isMenuCollapsed = true">Home</a>
+        <a class="nav-link text-light" routerLink="/" (click)="isMenuCollapsed = true">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/products" (click)="isMenuCollapsed = true">Products</a>
+        <a class="nav-link text-light" routerLink="/products" (click)="isMenuCollapsed = true">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/categories" (click)="isMenuCollapsed = true">Categories</a>
+        <a class="nav-link text-light" routerLink="/categories" (click)="isMenuCollapsed = true">Categories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" (click)="isMenuCollapsed = true">Calculator</a>
+        <a class="nav-link text-light" routerLink="/" (click)="isMenuCollapsed = true">Calculator</a>
       </li>
     </ul>
+    <div class="ml-auto">
+      <app-select-state></app-select-state>
+    </div>
   </div>
 </nav>
