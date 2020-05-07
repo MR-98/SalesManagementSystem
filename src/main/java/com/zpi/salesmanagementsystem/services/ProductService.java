@@ -23,9 +23,10 @@ public class ProductService {
         return IterableUtils.toList(this.productRepository.findAll());
     }
 
-    public void addProduct(Product product) {
+    public Product addProduct(Product product) {
         this.categoryService.addProductToCategory(product);
         this.productRepository.save(product);
+        return product;
     }
 
     public void editProduct(Product product) {

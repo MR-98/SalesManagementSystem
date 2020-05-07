@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {ProductService} from "../../services/product.service";
 import {FormBuilder} from "@angular/forms";
-import {Router} from "@angular/router";
 import {Product} from "../products/product";
 
 @Component({
@@ -18,8 +17,7 @@ export class ProductItemComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private formBuilder: FormBuilder,
-    private router: Router
+    private formBuilder: FormBuilder
   ) {
       this.productForm = this.formBuilder.group({
       id: '',
@@ -36,25 +34,17 @@ export class ProductItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.product = this.productService.getAll();
   }
 
   onSubmit(){
     this.product = this.productForm.value;
-    this.product.category = this.categoryForm;
-    this.productService.addProduct(this.product);
-    this.goBack();
-    console.warn(this.productForm.value);
-    console.warn(this.categoryForm.value);
+    this.product.category = this.categoryForm.value;
+    this.productService.addProduct(this.product).subscribe();
+    this.refresh();
   }
-  /*onSubmit(){
-    this.productService.addProduct(this.product).subscribe(data => console.log(data));
-    this.product = new Product();
-    this.goBack();
-  }*/
 
-  goBack(){
-    this.router.navigate(['/products']);
+  refresh(){
+    window.location.reload();
   }
 
 
