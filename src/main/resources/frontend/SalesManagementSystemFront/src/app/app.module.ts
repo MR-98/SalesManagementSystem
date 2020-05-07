@@ -16,6 +16,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import { ProductsComponent } from './components/products/products.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ProductService} from "./services/product.service";
 
 @NgModule({
   declarations: [
@@ -24,22 +27,25 @@ import { ProductsComponent } from './components/products/products.component';
     CategoriesComponent,
     CategoryItemComponent,
     HomeComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductItemComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    HttpClientModule,
-    MatSortModule,
-    MatTableModule,
-    MatProgressSpinnerModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule
-  ],
-  providers: [],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        HttpClientModule,
+        MatSortModule,
+        MatTableModule,
+        MatProgressSpinnerModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 <div class="main-container">
   <h2>List of products</h2>
+  <a routerLink="/addproduct" class="btn btn-info">Add product</a>
   <mat-form-field [hidden]="dataSource == undefined">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)">

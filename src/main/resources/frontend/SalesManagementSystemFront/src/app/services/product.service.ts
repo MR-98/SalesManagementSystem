@@ -22,4 +22,9 @@ export class ProductService {
   getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(this.url);
   }
+
+  addProduct(product: Object): Observable<Object>{
+    return this.http.post(this.url, product);
+  }
+
 }

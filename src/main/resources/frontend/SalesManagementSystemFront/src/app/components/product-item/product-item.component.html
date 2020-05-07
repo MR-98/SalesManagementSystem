@@ -1,0 +1,46 @@
+<div class="main-container">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      <input type="text"
+        class="form-control"
+             id="name"
+             name="name"
+             formControlName="name"
+             placeholder="Enter product name" />
+    </div>
+    <div class="form-group">
+      <label for="basePrice">Base price</label>
+      <input type="number"
+             class="form-control"
+             id="basePrice"
+             name="basePrice"
+             formControlName="basePrice"
+             placeholder="Enter base price" />
+    </div>
+
+    <div class="form-group">
+      <label for="preferredSalePrice">Preferred sale price</label>
+      <input type="number"
+             class="form-control"
+             id="preferredSalePrice"
+             name="preferredSalePrice"
+             formControlName="preferredSalePrice"
+             placeholder="Enter preferred sale price" />
+    </div>
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Category</label>
+      <input type="text"
+             class="form-control"
+             id="categoryName"
+             name="name"
+             formControlName="name"
+             placeholder="Enter category" />
+    </div>
+
+    </form>
+    <button type="submit" class="btn btn-info">Submit</button>
+  </form>
+
+</div>
