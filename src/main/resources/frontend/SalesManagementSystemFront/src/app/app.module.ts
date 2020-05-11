@@ -15,10 +15,12 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
-import { ProductsComponent } from './components/products/products.component';
-import { ProductItemComponent } from './components/product-item/product-item.component';
+import {ProductsComponent} from './components/products/products.component';
+import {ProductItemComponent} from './components/product-item/product-item.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProductService} from "./services/product.service";
+import {SelectStateComponent} from './components/select-state/select-state.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {ProductService} from "./services/product.service";
     CategoryItemComponent,
     HomeComponent,
     ProductsComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    SelectStateComponent
   ],
     imports: [
         BrowserModule,
@@ -43,7 +46,8 @@ import {ProductService} from "./services/product.service";
         MatInputModule,
         MatIconModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatSelectModule
     ],
   providers: [ProductService],
   bootstrap: [AppComponent]
