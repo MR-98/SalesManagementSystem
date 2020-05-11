@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Product} from "./product";
 import {ProductService} from "../../services/product.service";
 import {MatTableDataSource} from "@angular/material/table";
@@ -12,7 +12,7 @@ import {MatSort} from "@angular/material/sort";
 export class ProductsComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'basePrice', 'preferredSalePrice', 'category', 'details'];
-  categories: Product[];
+  products: Product[];
   dataSource;
 
   constructor(private productService: ProductService) { }
@@ -20,9 +20,9 @@ export class ProductsComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   ngOnInit(): void {
-    this.productService.getAll().subscribe(categories => {
-      this.categories = categories;
-      this.dataSource = new MatTableDataSource(this.categories);
+    this.productService.getAll().subscribe(products => {
+      this.products = products;
+      this.dataSource = new MatTableDataSource(this.products);
       this.dataSource.sort = this.sort;
     })
   }

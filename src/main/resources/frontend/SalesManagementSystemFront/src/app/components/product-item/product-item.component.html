@@ -1,0 +1,55 @@
+<div class="main-container">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      <input type="text"
+             class="form-control"
+             id="name"
+             name="name"
+             formControlName="name"
+             placeholder="Enter product name"
+             [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="basePrice">Base price</label>
+      <input type="number"
+             class="form-control"
+             id="basePrice"
+             name="basePrice"
+             formControlName="basePrice"
+             placeholder="Enter base price"
+             [ngClass]="{ 'is-invalid': submitted && f.basePrice.errors }"/>
+      <div *ngIf="submitted && f.basePrice.errors" class="invalid-feedback">
+        <div *ngIf="f.basePrice.errors.required">Base price is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="preferredSalePrice">Preferred sale price</label>
+      <input type="number"
+             class="form-control"
+             id="preferredSalePrice"
+             name="preferredSalePrice"
+             formControlName="preferredSalePrice"
+             placeholder="Enter preferred sale price"
+             [ngClass]="{ 'is-invalid': submitted && f.preferredSalePrice.errors }"/>
+      <div *ngIf="submitted && f.preferredSalePrice.errors" class="invalid-feedback">
+        <div *ngIf="f.preferredSalePrice.errors.required">Preferred sale price is required</div>
+      </div>
+    </div>
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Category</label>
+        <select class="custom-select" formControlName="name">
+          <option *ngFor="let category of Categories" [ngValue]="category">{{category}}</option>
+        </select>
+      </div>
+
+    </form>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+
+</div>

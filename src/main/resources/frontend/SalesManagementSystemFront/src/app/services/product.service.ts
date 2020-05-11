@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Product} from "../components/products/product";
@@ -22,4 +22,9 @@ export class ProductService {
   getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(this.url);
   }
+
+  addProduct(product: Product): Observable<Product>{
+    return this.http.post<any>(this.url, product, httpOptions);
+  }
+
 }
