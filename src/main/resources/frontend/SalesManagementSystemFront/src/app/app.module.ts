@@ -21,6 +21,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProductService} from "./services/product.service";
 import {SelectStateComponent} from './components/select-state/select-state.component';
 import {MatSelectModule} from "@angular/material/select";
+import {TaxCalculatorComponent} from './components/tax-calculator/tax-calculator.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -31,24 +33,26 @@ import {MatSelectModule} from "@angular/material/select";
     HomeComponent,
     ProductsComponent,
     ProductItemComponent,
-    SelectStateComponent
+    SelectStateComponent,
+    TaxCalculatorComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        NgbModule,
-        HttpClientModule,
-        MatSortModule,
-        MatTableModule,
-        MatProgressSpinnerModule,
-        BrowserAnimationsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatSelectModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    MatSortModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatCheckboxModule
+  ],
   providers: [ProductService],
   bootstrap: [AppComponent]
 })
