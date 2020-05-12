@@ -1,0 +1,76 @@
+<div class="main-container">
+  <h2>Tax calculator</h2>
+  <form [formGroup]="calculatorForm">
+    <div class="form-group">
+      <label for="state">Choose state</label>
+      <select class="custom-select" id="state" formControlName="state">
+        <option *ngFor="let state of states" [ngValue]="state">{{state.value}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="product">Choose product</label>
+      <select class="custom-select" id="product" formControlName="product" (change)=onSelectionChange()>
+        <option *ngFor="let product of products" [ngValue]="product">{{product.name}}</option>
+      </select>
+      <div *ngIf="product.touched && product.invalid" class="invalid-feedback d-block">
+        <div>Choose product</div>
+      </div>
+    </div>
+
+    <p>Tax for this product: {{tax * 100}}%</p>
+
+    <p>Product base price: {{selectedProduct?.basePrice || " "}}$</p>
+
+    <p>Product preferred sale price: {{selectedProduct?.preferredSalePrice || " "}}$</p>
+  </form>
+
+  <h5>Pick what to calculate:</h5>
+  <section class="checkboxSection">
+    <mat-checkbox class="customCheckbox" [(ngModel)]="logisticalCheckbox"
+                  (ngModelChange)="marginCheckbox = false; netPriceCheckbox=false;">Logistical cost
+    </mat-checkbox>
+    <mat-checkbox class="customCheckbox" [(ngModel)]="marginCheckbox"
+                  (ngModelChange)="logisticalCheckbox = false; netPriceCheckbox = false;">Margin value
+    </mat-checkbox>
+    <mat-checkbox class="customCheckbox" [(ngModel)]="netPriceCheckbox"
+                  (ngModelChange)="logisticalCheckbox = false; marginCheckbox = false;">Net price
+    </mat-checkbox>
+  </section>
+  <div *ngIf="logisticalCheckbox == false && netPriceCheckbox == false && marginCheckbox == false"
+       class="invalid-feedback d-block">
+    <div>Choose what to calculate</div>
+  </div>
+
+  <h5>Calculator:</h5>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg">
+        <div class="bg-success text-white p-4 mb-2" [ngClass]="{'bg-danger': logisticalCost < 0}">
+          <h4>Logistical cost [$]</h4>
+          <input type="number" class="form-control" [(ngModel)]="logisticalCost" [disabled]="logisticalCheckbox">
+        </div>
+      </div>
+      <div class="col-lg">
+        <div class="bg-success text-white p-4 mb-2" [ngClass]="{'bg-danger': marginValue < 0}">
+          <h4>Margin [$]</h4>
+          <input type="number" class="form-control" [(ngModel)]="marginValue" [disabled]="marginCheckbox">
+        </div>
+      </div>
+      <div class="col-lg">
+        <div class="bg-success text-white p-4"
+             [ngClass]="{'bg-danger': netPrice > selectedProduct?.preferredSalePrice}">
+          <h4>Net price [$]</h4>
+          <input type="number" class="form-control" [(ngModel)]="netPrice" [disabled]="netPriceCheckbox">
+        </div>
+      </div>
+    </div>
+    <button (click)="calculate()" class="btn btn-primary float-right mt-3"
+            [disabled]="!netPriceCheckbox && !logisticalCheckbox && !marginCheckbox">Calculate
+    </button>
+    <button (click)="initCalculatorInputs()" class="btn btn-danger float-right mt-3 mr-2"
+            [disabled]="!netPriceCheckbox && !logisticalCheckbox && !marginCheckbox">Refresh
+    </button>
+  </div>
+
+</div>
