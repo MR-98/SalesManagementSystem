@@ -24,6 +24,13 @@ export class ProductsComponent implements OnInit {
       this.products = products;
       this.dataSource = new MatTableDataSource(this.products);
       this.dataSource.sort = this.sort;
+      this.dataSource.sortingDataAccessor = (item, property) => {
+        if (property === 'category') {
+          return item.category.name;
+        } else {
+          return item[property];
+        }
+      };
     })
   }
 
