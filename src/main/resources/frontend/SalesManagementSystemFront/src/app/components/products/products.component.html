@@ -45,7 +45,7 @@
     <ng-container matColumnDef="details">
       <th mat-header-cell *matHeaderCellDef> Details </th>
       <td mat-cell *matCellDef="let element">
-        <button class="btn btn-info" (click)="redirectToDetails(element.id)">
+        <button id="details-button" class="btn btn-info" (click)="redirectToDetails(element.id)">
           <i class="fa fa-align-justify"></i>
         </button>
       </td>
