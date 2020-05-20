@@ -32,8 +32,4 @@ export class CategoriesComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-  redirectToDetails(id: number) {
-    //TODO: After clicking redirect to category page
-  }
 }

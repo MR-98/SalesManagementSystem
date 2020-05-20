@@ -18,7 +18,10 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts(@RequestParam(value="categoryId", required = false) Long categoryId){
+        if(categoryId != null) {
+            return this.productService.getAllProductsInCategory(categoryId);
+        }
         return this.productService.getAllProducts();
     }
 

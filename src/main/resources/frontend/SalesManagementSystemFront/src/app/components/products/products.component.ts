@@ -3,6 +3,7 @@ import {Product} from "./product";
 import {ProductService} from "../../services/product.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-products',
@@ -18,11 +19,13 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit(): void {
     this.productService.getAll().subscribe(products => {
       this.products = products;
       this.dataSource = new MatTableDataSource(this.products);
+      this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.dataSource.sortingDataAccessor = (item, property) => {
         if (property === 'category') {

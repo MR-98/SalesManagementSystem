@@ -79,7 +79,7 @@ export class SelectStateComponent implements OnInit {
   }
 
   onChange(state) {
-    console.log(state);
     localStorage.setItem("selectedState", state);
+    window.location.reload();
   }
 }

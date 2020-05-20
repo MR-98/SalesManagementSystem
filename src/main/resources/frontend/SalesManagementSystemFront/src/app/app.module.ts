@@ -23,6 +23,8 @@ import {SelectStateComponent} from './components/select-state/select-state.compo
 import {MatSelectModule} from "@angular/material/select";
 import {TaxCalculatorComponent} from './components/tax-calculator/tax-calculator.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {CategoryDetailsComponent} from './components/category-details/category-details.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     ProductsComponent,
     ProductItemComponent,
     SelectStateComponent,
-    TaxCalculatorComponent
+    TaxCalculatorComponent,
+    CategoryDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
