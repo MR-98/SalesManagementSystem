@@ -19,8 +19,6 @@ export class SaleTaxService {
   }
 
   getTaxByStateAndCategoryName(state: string, categoryName: string): Observable<number> {
-    console.log(state);
-    console.log(categoryName);
     return this.http.get<number>(this.url+"/"+state+"/"+categoryName);
   }
 }

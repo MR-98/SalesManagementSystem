@@ -2,8 +2,11 @@ package com.zpi.salesmanagementsystem.services;
 
 import com.zpi.salesmanagementsystem.models.SaleTax;
 import com.zpi.salesmanagementsystem.repositories.SaleTaxRepository;
+import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SaleTaxService {
@@ -13,6 +16,10 @@ public class SaleTaxService {
     @Autowired
     public SaleTaxService(SaleTaxRepository saleTaxRepository) {
         this.saleTaxRepository = saleTaxRepository;
+    }
+
+    public List<SaleTax> getAll() {
+        return IterableUtils.toList(this.saleTaxRepository.findAll());
     }
 
     public double getSaleTaxByStateAndCategoryName(String state, String categoryName) {

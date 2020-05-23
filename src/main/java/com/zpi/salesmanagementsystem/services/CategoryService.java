@@ -19,8 +19,12 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<Category> getAllCategory() {
+    public List<Category> getAllCategories() {
         return IterableUtils.toList(this.categoryRepository.findAll());
+    }
+
+    public Category getCategoryById(Long id) {
+        return this.categoryRepository.findById(id).orElseThrow();
     }
 
     public void addCategory(Category category) {

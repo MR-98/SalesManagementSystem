@@ -23,8 +23,16 @@ export class ProductService {
     return this.http.get<Product[]>(this.url);
   }
 
+  getAllInCategory(categoryId: number): Observable<Product[]> {
+    return this.http.get<Product[]>(this.url+"?categoryId="+categoryId);
+  }
+
   addProduct(product: Product): Observable<Product>{
     return this.http.post<any>(this.url, product, httpOptions);
+  }
+
+  deleteProduct(product: Product) {
+    // TODO: add delete option for product
   }
 
 }
