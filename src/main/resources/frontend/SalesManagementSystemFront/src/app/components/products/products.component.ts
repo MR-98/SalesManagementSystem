@@ -44,7 +44,8 @@ export class ProductsComponent implements OnInit {
 
   deleteProduct(product: Product) {
     this.productService.deleteProduct(product).subscribe();
-    window.location.reload();
+    this.products = this.products.filter((value,key)=>{ return value.id != product.id; });
+    this.dataSource = new MatTableDataSource(this.products);
   }
 
 }
