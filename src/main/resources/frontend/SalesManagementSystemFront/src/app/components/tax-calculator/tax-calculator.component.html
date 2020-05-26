@@ -3,7 +3,7 @@
   <form [formGroup]="calculatorForm">
     <div class="form-group">
       <label for="state">Choose state</label>
-      <select class="custom-select" id="state" formControlName="state">
+      <select class="custom-select" id="state" formControlName="state" (change)=onSelectionChange()>
         <option *ngFor="let state of states" [ngValue]="state">{{state.value}}</option>
       </select>
     </div>

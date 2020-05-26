@@ -43,7 +43,7 @@ export class CategoryDetailsComponent implements OnInit {
 
     this.categoryService.get(this.categoryId).subscribe(category => {
       this.category = category;
-      this.saleTaxService.getTaxByStateAndCategoryName(this.selectedValue, this.category.name).subscribe(tax => {
+      this.saleTaxService.getTaxByStateAndCategoryName(this.selectedValue, this.category.name, 0).subscribe(tax => {
         this.tax = tax;
       });
     });
