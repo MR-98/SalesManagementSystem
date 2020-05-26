@@ -108,10 +108,11 @@ export class TaxCalculatorComponent implements OnInit {
   onSelectionChange() {
     let state: State = this.calculatorForm.get('state').value;
     let product: Product = this.calculatorForm.get('product').value;
-
-    this.saleTaxService.getTaxByStateAndCategoryName(state.value, product.category.name).subscribe(tax => {
+    if(product == undefined) {
+      return;
+    }
+    this.saleTaxService.getTaxByStateAndCategoryName(state.value, product.category.name, product.basePrice).subscribe(tax => {
       this.tax = tax;
-      console.log(this.tax);
       this.selectedProduct = product;
       this.initCalculatorInputs();
     });
@@ -121,10 +122,8 @@ export class TaxCalculatorComponent implements OnInit {
     this.logisticalCost = 0;
 
     this.netPrice = Math.round((this.selectedProduct.preferredSalePrice / (1 + this.tax)) * 100) / 100;
-    console.log(this.netPrice);
 
     this.marginValue = Math.round((this.netPrice - this.selectedProduct.basePrice - this.logisticalCost) * 100) / 100;
-    console.log(this.marginValue);
   }
 
   calculate() {

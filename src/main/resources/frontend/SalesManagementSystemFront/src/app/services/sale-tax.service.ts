@@ -18,7 +18,7 @@ export class SaleTaxService {
   constructor(private http: HttpClient) {
   }
 
-  getTaxByStateAndCategoryName(state: string, categoryName: string): Observable<number> {
-    return this.http.get<number>(this.url+"/"+state+"/"+categoryName);
+  getTaxByStateAndCategoryName(state: string, categoryName: string, productBasePrice: number): Observable<number> {
+    return this.http.get<number>(this.url+"/"+state+"/"+categoryName+"?productPrice="+productBasePrice);
   }
 }

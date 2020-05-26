@@ -22,9 +22,19 @@ public class SaleTaxService {
         return IterableUtils.toList(this.saleTaxRepository.findAll());
     }
 
-    public double getSaleTaxByStateAndCategoryName(String state, String categoryName) {
+    public double getSaleTaxByStateAndCategoryName(String state, String categoryName, Double productPrice) {
         SaleTax saleTax = this.saleTaxRepository.findByStateName(state);
-        switch(categoryName) {
+
+        // Sale tax exceptions
+        if (saleTax.getStateName().equals("Massachusetts") && categoryName.equals("Clothing") && productPrice > 175) {
+            return 0.0625;
+        } else if (saleTax.getStateName().equals("New York") && categoryName.equals("Clothing") && productPrice > 110) {
+            return 0.04;
+        } else if (saleTax.getStateName().equals("Rhode Island") && categoryName.equals("Clothing") && productPrice > 250) {
+            return 0.07;
+        }
+
+        switch (categoryName) {
             case "Groceries":
                 return saleTax.getGroceries();
             case "Prepared food":
