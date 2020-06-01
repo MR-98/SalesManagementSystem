@@ -25,6 +25,7 @@ import {TaxCalculatorComponent} from './components/tax-calculator/tax-calculator
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {CategoryDetailsComponent} from './components/category-details/category-details.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {DatabaseCapacityComponent} from './components/database-capacity/database-capacity.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     ProductItemComponent,
     SelectStateComponent,
     TaxCalculatorComponent,
-    CategoryDetailsComponent
+    CategoryDetailsComponent,
+    DatabaseCapacityComponent
   ],
   imports: [
     BrowserModule,
