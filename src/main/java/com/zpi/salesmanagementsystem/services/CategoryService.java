@@ -42,14 +42,14 @@ public class CategoryService {
     public void addProductToCategory(Product product) {
         Category category = this.categoryRepository.findById(product.getCategory().getId()).orElseThrow();
         category.getProducts().add(product);
-        category.setQuantityOfProducts(category.getQuantityOfProducts() + 1);
+        category.setQuantityOfProducts(category.getProducts().size());
         this.categoryRepository.save(category);
     }
 
     public void removeProductFromCategory(Product product) {
         Category category = this.categoryRepository.findById(product.getCategory().getId()).orElseThrow();
         category.getProducts().remove(product);
-        category.setQuantityOfProducts(category.getQuantityOfProducts() - 1);
+        category.setQuantityOfProducts(category.getProducts().size());
         this.categoryRepository.save(category);
     }
 }
