@@ -27,6 +27,7 @@ import {CategoryDetailsComponent} from './components/category-details/category-d
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {DatabaseCapacityComponent} from './components/database-capacity/database-capacity.component';
 import { ProductsNumberComponent } from './components/products-number/products-number.component';
+import {AveragePriceGraphComponent} from "./components/average-price-graph/average-price-graph.component";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ProductsNumberComponent } from './components/products-number/products-n
     TaxCalculatorComponent,
     CategoryDetailsComponent,
     DatabaseCapacityComponent,
-    ProductsNumberComponent
+    ProductsNumberComponent,
+    AveragePriceGraphComponent
   ],
   imports: [
     BrowserModule,
