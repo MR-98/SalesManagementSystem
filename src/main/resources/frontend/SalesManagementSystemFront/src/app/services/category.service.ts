@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class CategoryService {
 
-  url: string = 'http://localhost:8080/categories';
+  url: string = 'https://sms-zpi-2020.ew.r.appspot.com/categories';
 
   constructor(private http: HttpClient) {
   }

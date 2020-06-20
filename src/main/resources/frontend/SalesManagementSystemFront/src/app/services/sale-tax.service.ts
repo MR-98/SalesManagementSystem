@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class SaleTaxService {
 
-  url: string = 'http://localhost:8080/calculator';
+  url: string = 'https://sms-zpi-2020.ew.r.appspot.com/calculator';
 
   constructor(private http: HttpClient) {
   }

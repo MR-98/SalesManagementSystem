@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class ProductService {
 
-  url: string = 'http://localhost:8080/products';
+  url: string = 'https://sms-zpi-2020.ew.r.appspot.com/products';
 
   constructor(private http: HttpClient) {
   }
