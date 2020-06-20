@@ -64,6 +64,7 @@ steps:
     gcloud auth activate-service-account --key-file $(authkey.secureFilePath)
   displayName: 'authentication'
 
-- script:
-    gcloud app deploy src/main/appengine/app.yaml --project sms-zpi-2020
+- task: CmdLine@2
+  inputs:
+    script: 'mvn -DskipTests appengine:deploy'
   displayName: 'backend deploy'
