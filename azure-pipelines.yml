@@ -62,19 +62,5 @@ steps:
 
 - script:
     gcloud auth activate-service-account --key-file $(authkey.secureFilePath)
+    gcloud app deploy src/main/appengine/app.yaml --project sms-zpi-2020
   displayName: 'authentication'
-
-- task: Maven@3
-  displayName: 'backend deploy'
-  inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'appengine:deploy'
-    options: '-DskipTest -Dapp.deploy.projectId=sms-zpi-2020'
-    publishJUnitResults: false
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.11'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
