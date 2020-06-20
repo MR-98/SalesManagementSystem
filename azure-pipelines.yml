@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- master
+- develop
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -34,3 +34,16 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+- task: Npm@1
+  displayName: 'Install firebase tools'
+  inputs:
+    command: custom
+    customCommand: install -g firebase-tools
+    workingDir: src/main/resources/frontend/SalesManagementSystemFront
+
+- task: CmdLine@2
+  inputs:
+    script: 'firebase deploy --token "$(FIREBASE_TOKEN)"'
+    workingDirectory: src/main/resources/frontend/SalesManagementSystemFront
+  displayName: 'firebase publish'
