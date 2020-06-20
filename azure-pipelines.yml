@@ -66,5 +66,5 @@ steps:
       gcloud auth activate-service-account --key-file $(authkey.secureFilePath)
       gcloud config set project sms-zpi-2020
       gcloud services enable appengine.googleapis.com
-      gcloud app deploy src/main/appengine/app.yaml --project sms-zpi-2020
+      mvn -DskipTests appengine:deploy
   displayName: 'backend deploy'
