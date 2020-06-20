@@ -66,5 +66,5 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'mvn -DskipTests appengine:deploy'
+    script: 'mvn -DskipTests appengine:deploy -Dapp.deploy.projectId=sms-zpi-2020'
   displayName: 'backend deploy'
