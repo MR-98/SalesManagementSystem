@@ -52,3 +52,15 @@ steps:
     script: 'firebase deploy --token "$(FIREBASE_TOKEN)"'
     workingDirectory: 'src/main/resources'
   displayName: 'firebase publish'
+
+- task: DownloadSecureFile@1
+  name: authkey
+  displayName: 'Download Service Account Key'
+  inputs:
+    secureFile: 'GoogleServiceAccountKey.json'
+    retryCount: '2'
+
+- script:
+    gcloud auth activate-service-account --key-file $(authkey.secureFilePath)
+    mvn -DskipTests appengine:deploy
+  displayName: 'backend deploy'
