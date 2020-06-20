@@ -50,5 +50,5 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'firebase deploy --token "$(FIREBASE_TOKEN)"'
-    workingDirectory: 'src/main/resources/frontend/SalesManagementSystemFront'
+    workingDirectory: 'src/main/resources'
   displayName: 'firebase publish'
