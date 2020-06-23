@@ -35,4 +35,8 @@ export class ProductService {
     return this.http.delete<any>(this.url +'/'+ product.id);
   }
 
+  getAveragePriceInCategory(): Observable<Product>{
+    return this.http.get<any>(this.url + '/average');
+  }
+
 }

@@ -7,7 +7,10 @@ import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CategoryService {
@@ -52,4 +55,5 @@ public class CategoryService {
         category.setQuantityOfProducts(category.getProducts().size());
         this.categoryRepository.save(category);
     }
+
 }

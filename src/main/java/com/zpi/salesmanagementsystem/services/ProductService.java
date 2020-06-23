@@ -4,10 +4,13 @@ import com.zpi.salesmanagementsystem.models.Product;
 import com.zpi.salesmanagementsystem.repositories.ProductRepository;
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.lang.*;
 
 @Service
 public class ProductService {
@@ -43,5 +46,26 @@ public class ProductService {
         Product product = this.productRepository.findById(id).orElseThrow();
         this.categoryService.removeProductFromCategory(product);
         this.productRepository.deleteById(id);
+    }
+
+    public List<Double> getAveragePriceInCategory() {
+        List<Double> averagePriceList = new ArrayList<>();
+        List<Product> products = getAllProducts();
+        for(long i = 1; i < 7; i++){
+            double sum = 0;
+            double numberOfProducts = 0;
+            for(int j = 0; j < products.size(); j++){
+                if(products.get(j).getCategory().getId() == i){
+                    sum += products.get(j).getBasePrice();
+                    numberOfProducts++;
+                }
+            }
+            if ((Double.isNaN(sum / numberOfProducts))) {
+                averagePriceList.add(0.0);
+            } else {
+                averagePriceList.add(sum / numberOfProducts);
+            }
+        }
+        return averagePriceList;
     }
 }
