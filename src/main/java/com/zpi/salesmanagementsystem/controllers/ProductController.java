@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -25,6 +26,9 @@ public class ProductController {
         return this.productService.getAllProducts();
     }
 
+    @GetMapping("/average")
+    public List<Double> getAveragePriceInCategory() { return this.productService.getAveragePriceInCategory(); }
+
     @PostMapping
     public Product addProduct(@RequestBody Product product){
         return this.productService.addProduct(product);
@@ -39,4 +43,6 @@ public class ProductController {
     public void deleteProduct(@PathVariable("id") Long id) {
         this.productService.deleteProduct(id);
     }
+
+
 }

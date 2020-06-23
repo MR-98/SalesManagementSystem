@@ -17,12 +17,12 @@ export class ProductsNumberComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.getAll().subscribe(categories => {
-      let categoriesNumber = []
-      let categoriesLabels = []
+      let categoriesNumber = [];
+      let categoriesLabels = [];
       categories.forEach((category)=>{
-        categoriesNumber.push(category.quantityOfProducts)
-        categoriesLabels.push(category.name)
-      })
+        categoriesNumber.push(category.quantityOfProducts);
+        categoriesLabels.push(category.name);
+      });
 
       this.canvas = document.getElementById('productsNumberCanvas');
       this.ctx = this.canvas.getContext('2d');
