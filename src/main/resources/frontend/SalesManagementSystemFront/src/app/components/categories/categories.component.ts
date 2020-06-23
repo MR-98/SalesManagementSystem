@@ -11,7 +11,7 @@ import {MatSort} from "@angular/material/sort";
 })
 export class CategoriesComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'quantityOfProducts', 'details'];
+  displayedColumns: string[] = ['id', 'category name', 'quantityOfProducts', 'details'];
   categories: Category[];
   dataSource;
 
