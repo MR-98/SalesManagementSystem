@@ -46,19 +46,19 @@
   <div class="container">
     <div class="row">
       <div class="col-lg">
-        <div class="bg-success text-white p-4 mb-2" [ngClass]="{'bg-danger': logisticalCost < 0}">
+        <div class="bg-warning text-white p-4 mb-2" [ngClass]="{'bg-danger': logisticalCost < 0}">
           <h4>Logistical cost [$]</h4>
           <input type="number" class="form-control" [(ngModel)]="logisticalCost" [disabled]="logisticalCheckbox">
         </div>
       </div>
       <div class="col-lg">
-        <div class="bg-success text-white p-4 mb-2" [ngClass]="{'bg-danger': marginValue < 0}">
+        <div class="bg-warning text-white p-4 mb-2" [ngClass]="{'bg-danger': marginValue < 0}">
           <h4>Margin [$]</h4>
           <input type="number" class="form-control" [(ngModel)]="marginValue" [disabled]="marginCheckbox">
         </div>
       </div>
       <div class="col-lg">
-        <div class="bg-success text-white p-4"
+        <div class="bg-warning text-white p-4"
              [ngClass]="{'bg-danger': netPrice > selectedProduct?.preferredSalePrice}">
           <h4>Net price [$]</h4>
           <input type="number" class="form-control" [(ngModel)]="netPrice" [disabled]="netPriceCheckbox">
